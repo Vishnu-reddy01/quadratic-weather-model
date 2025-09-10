@@ -1,0 +1,37 @@
+name: Run Weather Model Scripts
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Run Version 1 (Hardcoded)
+        run: python version1_hardcoded.py
+
+      - name: Run Version 2 (Keyboard Input - auto feed)
+        run: |
+          cat <<EOF | python version2_keyboard_input.py
+0.3
+-2.5
+26
+4
+EOF
+
+      - name: Run Version 3 (File Input Single)
+        run: python version3_file_input_single.py
+
+      - name: Run Version 4 (File Input Multiple)
+        run: python version4_file_input_multiple.py
