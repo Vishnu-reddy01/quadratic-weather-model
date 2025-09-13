@@ -1,2 +1,2 @@
-# quadratic-weather-model
+# weather-mode Hardcoded
 SE EXPERIMENT 1
